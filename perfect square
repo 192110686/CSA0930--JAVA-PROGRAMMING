@@ -1,0 +1,44 @@
+package mycodes;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class PerfectSquaresWithDigitSum 
+{
+    public static void main(String[] args) 
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter lower range: ");
+        double l = s.nextDouble();
+        System.out.print("Enter upper range: ");
+        double u = s.nextDouble();
+        if (l < 0 || u < 0 || l != (int)l || u != (int)u || l > u) {
+            System.out.println("Invalid input: Please enter non-negative integer values for the range, and ensure the lower range is less than or equal to the upper range.");
+        }
+        else 
+        {
+            ArrayList<Integer> r = findPSWithDS((int) l, (int) u);
+            System.out.println(r);
+        }
+        s.close();
+    }
+    public static ArrayList<Integer> findPSWithDS(int l, int u) {
+        ArrayList<Integer> r = new ArrayList<>();
+        for (int i = l; i <= u; i++) {
+            if (isPS(i) && getDS(i) < 10) {
+                r.add(i);
+            }
+        }
+        return r;
+    }
+    public static boolean isPS(int n) {
+        int s = (int) Math.sqrt(n);
+        return s * s == n;
+    }
+    public static int getDS(int n) {
+        int s = 0;
+        while (n > 0) {
+            s += n % 10;
+            n /= 10;
+        }
+        return s;
+    }
+}

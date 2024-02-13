@@ -1,0 +1,65 @@
+package mycodes;
+import java.util.Scanner;
+
+public class FibonacciSeries {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose an option:");
+        System.out.println("1. Generate Fibonacci series");
+        System.out.println("2. Generate Negative Fibonacci series");
+        System.out.print("Enter your choice: ");
+
+        int option = scanner.nextInt();
+
+        switch (option) {
+            case 1:
+                System.out.print("Enter the number of terms for Fibonacci series: ");
+                int n = scanner.nextInt();
+                generateFibonacciSeries(n);
+                break;
+            case 2:
+                System.out.print("Enter the number of terms for Negative Fibonacci series: ");
+                int m = scanner.nextInt();
+                generateNegativeFibonacciSeries(m);
+                break;
+            default:
+                System.out.println("Invalid option. Please choose either 1 or 2.");
+        }
+
+        scanner.close();
+    }
+
+    public static void generateFibonacciSeries(int n) {
+        System.out.println("Fibonacci Series:");
+        int a = 0, b = 1;
+        System.out.print(a + " ");
+        if (n >= 2) {
+            System.out.print(b + " ");
+            for (int i = 2; i < n; i++) {
+                int temp = a + b;
+                System.out.print(temp + " ");
+                a = b;
+                b = temp;
+            }
+        }
+    }
+
+    public static void generateNegativeFibonacciSeries(int n) {
+        System.out.println("Negative Fibonacci Series:");
+        if (n >= 1) {
+            System.out.print(0 + " ");
+        }
+        if (n >= 2) {
+            System.out.print(-1 + " ");
+        }
+        int a = 0, b = -1;
+        for (int i = 2; i < n; i++) {
+            int temp = b - a;
+            System.out.print(temp + " ");
+            b = a;
+            a = temp;
+        }
+    }
+}

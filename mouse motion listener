@@ -1,0 +1,26 @@
+package Listener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+public class u516MouseMotionEventDemo extends JPanel implements MouseMotionListener {
+u516MouseMotionEventDemo()
+{
+JTextArea a=new JTextArea();
+a.addMouseMotionListener(this);
+JFrame b=new JFrame();
+b.add(a);
+b.setVisible(true);
+}
+public void mouseMoved(MouseEvent e) {
+System.out.println("Mouse is Moving");
+}
+public void mouseDragged(MouseEvent e) {
+System.out.println("MouseDragged");
+}
+public static void main(String arg[])
+{
+u516MouseMotionEventDemo a=new u516MouseMotionEventDemo();
+}
+}

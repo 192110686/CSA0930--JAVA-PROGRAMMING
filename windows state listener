@@ -1,0 +1,24 @@
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class u521windowstate extends JPanel implements WindowStateListener {
+u521windowstate ()
+{
+JFrame b=new JFrame();
+b.addWindowStateListener(this);
+b.setVisible(true);
+}
+public static void main(String arg[])
+{
+u521windowstate b=new u521windowstate ();
+}
+public void windowStateChanged(WindowEvent e) {
+// TODO Auto-generated method stub
+System.out.println("State Changed");
+}}
+

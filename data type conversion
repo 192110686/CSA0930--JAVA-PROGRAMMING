@@ -1,0 +1,43 @@
+public class DataTypeConversionExample {
+    public static void main(String[] args) {
+        // Implicit conversion (widening) from smaller data types to larger ones
+        byte byteValue = 100;
+        short shortValue = byteValue;
+        int intValue = shortValue;
+        long longValue = intValue;
+        float floatValue = longValue;
+        double doubleValue = floatValue;
+
+        System.out.println("Implicit conversion (widening):");
+        System.out.println("byteValue: " + byteValue);
+        System.out.println("shortValue: " + shortValue);
+        System.out.println("intValue: " + intValue);
+        System.out.println("longValue: " + longValue);
+        System.out.println("floatValue: " + floatValue);
+        System.out.println("doubleValue: " + doubleValue);
+
+        // Explicit conversion (narrowing) from larger data types to smaller ones
+        double doubleNum = 123.456;
+        float floatNum = (float) doubleNum;
+        long longNum = (long) floatNum;
+        int intNum = (int) longNum;
+        short shortNum = (short) intNum;
+        byte byteNum = (byte) shortNum;
+
+        System.out.println("\nExplicit conversion (narrowing):");
+        System.out.println("doubleNum: " + doubleNum);
+        System.out.println("floatNum: " + floatNum);
+        System.out.println("longNum: " + longNum);
+        System.out.println("intNum: " + intNum);
+        System.out.println("shortNum: " + shortNum);
+        System.out.println("byteNum: " + byteNum);
+
+        // Overflow and underflow scenarios
+        int overflowInt = Integer.MAX_VALUE + 1;
+        int underflowInt = Integer.MIN_VALUE - 1;
+
+        System.out.println("\nOverflow and Underflow scenarios:");
+        System.out.println("Overflow: " + overflowInt); // Overflow: -2147483648
+        System.out.println("Underflow: " + underflowInt); // Underflow: 2147483647
+    }
+}

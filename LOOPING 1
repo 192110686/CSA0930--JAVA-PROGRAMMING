@@ -1,0 +1,26 @@
+public class MissingNumbersInSeries {
+    public static void main(String[] args) {
+        int[] series = {1, 5, 11, 19}; // Given series
+        int[] missingNumbers = findMissingNumbers(series);
+        
+        if (missingNumbers.length == 0) {
+            System.out.println("No missing numbers in the series.");
+        } else {
+            System.out.println("Missing numbers in the series:");
+            for (int num : missingNumbers) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+
+    public static int[] findMissingNumbers(int[] series) {
+        int[] missingNumbers = new int[series.length - 1];
+        for (int i = 0; i < series.length - 1; i++) {
+            int diff = series[i + 1] - series[i];
+            if (diff != (2 * (i + 1) + 1)) {
+                missingNumbers[i] = series[i] + (i + 1) * 2 + 1;
+            }
+        }
+        return missingNumbers;
+    }
+}

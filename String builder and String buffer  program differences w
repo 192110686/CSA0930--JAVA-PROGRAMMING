@@ -1,0 +1,47 @@
+public class StringMethodsDemo {
+    public static void main(String[] args) {
+        // String constructors
+        String str1 = new String(); // Empty string
+        String str2 = new String("Hello"); // String initialized with value
+        char[] charArray = {'W', 'o', 'r', 'l', 'd'};
+        String str3 = new String(charArray); // String initialized with char array
+        byte[] byteArray = {65, 66, 67, 68, 69};
+        String str4 = new String(byteArray); // String initialized with byte array and ASCII values
+        
+        // String methods
+        String originalStr = "Hello, World!";
+        
+        // length()
+        System.out.println("Length of the string: " + originalStr.length());
+        
+        // charAt()
+        char charAtIndex = originalStr.charAt(4);
+        System.out.println("Character at index 4: " + charAtIndex);
+        
+        // substring()
+        String substring = originalStr.substring(7);
+        System.out.println("Substring from index 7: " + substring);
+        
+        // indexOf()
+        int indexOfComma = originalStr.indexOf(",");
+        System.out.println("Index of comma: " + indexOfComma);
+        
+        // contains()
+        boolean containsWorld = originalStr.contains("World");
+        System.out.println("Contains 'World': " + containsWorld);
+        
+        // equals()
+        boolean isEqual = originalStr.equals("Hello, World!");
+        System.out.println("Is equal to 'Hello, World!': " + isEqual);
+        
+        // toUpperCase() and toLowerCase()
+        String upperCaseStr = originalStr.toUpperCase();
+        String lowerCaseStr = originalStr.toLowerCase();
+        System.out.println("Uppercase string: " + upperCaseStr);
+        System.out.println("Lowercase string: " + lowerCaseStr);
+        
+        // replace()
+        String replacedStr = originalStr.replace("World", "Universe");
+        System.out.println("String after replacement: " + replacedStr);
+    }
+}

@@ -1,0 +1,25 @@
+public class LogicGates {
+    // Implementing OR gate
+    public static boolean orGate(boolean input1, boolean input2) {
+        return input1 || input2;
+    }
+
+    // Implementing AND gate
+    public static boolean andGate(boolean input1, boolean input2) {
+        return input1 && input2;
+    }
+
+    public static void main(String[] args) {
+        // Inputs for testing
+        boolean inputA = true;
+        boolean inputB = false;
+
+        // Testing OR gate
+        boolean resultOR = orGate(inputA, inputB);
+        System.out.println("OR gate result: " + resultOR); // Should print true
+
+        // Testing AND gate
+        boolean resultAND = andGate(inputA, inputB);
+        System.out.println("AND gate result: " + resultAND); // Should print false
+    }
+}

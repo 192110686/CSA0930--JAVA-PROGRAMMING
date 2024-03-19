@@ -1,0 +1,24 @@
+import java.util.Arrays;
+
+public class MatrixExample {
+    public static void main(String[] args) {
+        // Define the size of the matrix
+        int rows = 3;
+        int cols = 4;
+
+        // Create a 2D matrix using Arrays class
+        int[][] matrix = new int[rows][cols];
+
+        // Fill the matrix with some values
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                // For demonstration, let's fill the matrix with indices sum
+                matrix[i][j] = i + j;
+            }
+        }
+
+        // Print the matrix using deepToString method from Arrays class
+        System.out.println("Matrix:");
+        System.out.println(Arrays.deepToString(matrix));
+    }
+}

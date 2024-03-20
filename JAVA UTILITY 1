@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class InputExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input a character
+        System.out.print("Enter a character: ");
+        char character = scanner.next().charAt(0); // Get the first character of the input string
+
+        // Input a string
+        System.out.print("Enter a string: ");
+        String string = scanner.nextLine();
+
+        // Input an integer
+        System.out.print("Enter an integer: ");
+        int integer = scanner.nextInt();
+
+        // Input a float
+        System.out.print("Enter a float: ");
+        float floatNumber = scanner.nextFloat();
+
+        // Input a double
+        System.out.print("Enter a double: ");
+        double doubleNumber = scanner.nextDouble();
+
+        // Output the inputs
+        System.out.println("Character: " + character);
+        System.out.println("String: " + string);
+        System.out.println("Integer: " + integer);
+        System.out.println("Float: " + floatNumber);
+        System.out.println("Double: " + doubleNumber);
+
+        scanner.close();
+    }
+}

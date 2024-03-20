@@ -1,0 +1,43 @@
+// Final variable
+class FinalVariableExample {
+    final int finalVariable = 10;
+
+    void display() {
+        // Cannot reassign a final variable
+        // finalVariable = 20; // This will cause a compilation error
+        System.out.println("Final variable value: " + finalVariable);
+    }
+}
+
+// Final method
+class FinalMethodExample {
+    final void finalMethod() {
+        System.out.println("This is a final method.");
+    }
+}
+
+// Final class
+final class FinalClassExample {
+    void display() {
+        System.out.println("This is a final class.");
+    }
+}
+
+// Attempting to extend a final class will result in a compilation error
+// class AnotherClass extends FinalClassExample {} // This will cause a compilation error
+
+public class Main {
+    public static void main(String[] args) {
+        // Final variable example
+        FinalVariableExample varExample = new FinalVariableExample();
+        varExample.display();
+
+        // Final method example
+        FinalMethodExample methodExample = new FinalMethodExample();
+        methodExample.finalMethod();
+
+        // Final class example
+        FinalClassExample classExample = new FinalClassExample();
+        classExample.display();
+    }
+}

@@ -1,0 +1,31 @@
+public class word{
+    public static void main(String[] args) {
+        try {
+            // Divided by Zero
+            int result = 10 / 0; // This will throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception: Divided by Zero");
+        }
+
+        try {
+            // Logarithm of negative or Zero
+            double result = Math.log(-10); // This will throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception: Logarithm of negative or Zero");
+        }
+
+        try {
+            // Tan 90 Degree
+            double result = Math.tan(Math.toRadians(90)); // This will throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception: Tan 90 Degree");
+        }
+
+        try {
+            // Zero power Zero
+            double result = Math.pow(0, 0); // This will throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception: Zero power Zero");
+        }
+    }
+}

@@ -1,0 +1,71 @@
+public class ThreadDemo {
+
+    public static void main(String[] args) {
+        T1 t1 = new T1();
+        T2 t2 = new T2();
+
+        t1.start();
+        t2.start();
+    }
+}
+
+class T1 extends Thread {
+
+    @Override
+    public void run() {
+        System.out.println("Thread T1 started.");
+        try {
+            for (int i = 0; i <= 1000; i++) {
+                if (isArmstrongNumber(i)) {
+                    System.out.println("Armstrong number found: " + i);
+                }
+                Thread.sleep(10); // Simulating some work
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Thread T1 interrupted.");
+        }
+        System.out.println("Thread T1 exiting.");
+    }
+
+    private boolean isArmstrongNumber(int num) {
+        int originalNum, remainder, result = 0, n = 0;
+
+        originalNum = num;
+
+        // Store the number of digits of num in n
+        for (originalNum = num; originalNum != 0; originalNum /= 10, ++n);
+
+        originalNum = num;
+
+        // Calculate the sum of power of digits
+        while (originalNum != 0) {
+            remainder = originalNum % 10;
+            result += Math.pow(remainder, n);
+            originalNum /= 10;
+        }
+
+        return result == num;
+    }
+}
+
+class T2 extends Thread {
+
+    @Override
+    public void run() {
+        System.out.println("Thread T2 started.");
+        try {
+            int n = 10, t1 = 0, t2 = 1;
+            System.out.println("Fibonacci series:");
+            for (int i = 1; i <= n; ++i) {
+                System.out.print(t1 + " ");
+                int sum = t1 + t2;
+                t1 = t2;
+                t2 = sum;
+                Thread.sleep(10); // Simulating some work
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Thread T2 interrupted.");
+        }
+        System.out.println("\nThread T2 exiting.");
+    }
+}

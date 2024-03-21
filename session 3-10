@@ -1,0 +1,82 @@
+public class ThreadComparisonDemo {
+
+    public static void main(String[] args) {
+        Thread t1 = new Thread(new MyThread("Thread 1"));
+        Thread t2 = new Thread(new MyThread("Thread 2"));
+
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MyThread thread1 = (MyThread) t1;
+        MyThread thread2 = (MyThread) t2;
+
+        long waitingTimeThread1 = thread1.getWaitingTime();
+        long sleepingTimeThread1 = thread1.getSleepingTime();
+
+        long waitingTimeThread2 = thread2.getWaitingTime();
+        long sleepingTimeThread2 = thread2.getSleepingTime();
+
+        System.out.println("Waiting time for Thread 1: " + waitingTimeThread1 + " milliseconds");
+        System.out.println("Sleeping time for Thread 1: " + sleepingTimeThread1 + " milliseconds");
+        System.out.println("Waiting time for Thread 2: " + waitingTimeThread2 + " milliseconds");
+        System.out.println("Sleeping time for Thread 2: " + sleepingTimeThread2 + " milliseconds");
+
+        if (waitingTimeThread1 + sleepingTimeThread1 > waitingTimeThread2 + sleepingTimeThread2) {
+            System.out.println("Thread 1 has longer waiting and sleeping time.");
+        } else if (waitingTimeThread1 + sleepingTimeThread1 < waitingTimeThread2 + sleepingTimeThread2) {
+            System.out.println("Thread 2 has longer waiting and sleeping time.");
+        } else {
+            System.out.println("Both threads have equal waiting and sleeping time.");
+        }
+    }
+}
+
+class MyThread implements Runnable {
+    private String name;
+    private long startTime;
+    private long endTime;
+    private long waitingTime;
+    private long sleepingTime;
+
+    public MyThread(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void run() {
+        startTime = System.currentTimeMillis();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        endTime = System.currentTimeMillis();
+        sleepingTime = endTime - startTime;
+
+        synchronized (this) {
+            try {
+                wait(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        endTime = System.currentTimeMillis();
+        waitingTime = endTime - startTime;
+    }
+
+    public long getWaitingTime() {
+        return waitingTime;
+    }
+
+    public long getSleepingTime() {
+        return sleepingTime;
+    }
+}

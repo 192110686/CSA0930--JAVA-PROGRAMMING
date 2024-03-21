@@ -1,0 +1,64 @@
+public class IllegalArgumentExceptionsDemo {
+    public static void main(String[] args) {
+        try {
+            // Negative Argument in the method requiring non-negative values
+            int result = calculateSquareRoot(-10); // This will throw IllegalArgumentException
+        } catch (IllegalArgumentException e) {
+            System.out.println("Illegal Argument Exception: Negative Argument in the method requiring non-negative values");
+        }
+
+        try {
+            // Invalid Enum Constant Passed to a Method
+            processDirection(Direction.INVALID); // This will throw IllegalArgumentException
+        } catch (IllegalArgumentException e) {
+            System.out.println("Illegal Argument Exception: Invalid Enum Constant Passed to a Method");
+        }
+
+        try {
+            // Setting an Invalid Range for a Method Parameter
+            int result = calculateAverage(-10, 100); // This will throw IllegalArgumentException
+        } catch (IllegalArgumentException e) {
+            System.out.println("Illegal Argument Exception: Setting an Invalid Range for a Method Parameter");
+        }
+
+        try {
+            // Empty or Null String Argument in a Method Requiring Non-Empty Strings
+            processString(""); // This will throw IllegalArgumentException
+        } catch (IllegalArgumentException e) {
+            System.out.println("Illegal Argument Exception: Empty or Null String Argument in a Method Requiring Non-Empty Strings");
+        }
+    }
+
+    public static int calculateSquareRoot(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Argument must be non-negative");
+        }
+        return (int) Math.sqrt(number);
+    }
+
+    enum Direction {
+        NORTH, SOUTH, EAST, WEST, INVALID
+    }
+
+    public static void processDirection(Direction direction) {
+        if (direction == Direction.INVALID) {
+            throw new IllegalArgumentException("Invalid direction");
+        }
+        // Process direction
+    }
+
+    public static int calculateAverage(int start, int end) {
+        if (start < 0 || end < 0 || start > end) {
+            throw new IllegalArgumentException("Invalid range");
+        }
+        // Calculate average
+        return (start + end) / 2;
+    }
+
+    public static void processString(String str) {
+        if (str == null || str.isEmpty()) {
+            throw new IllegalArgumentException("String must be non-empty");
+        }
+        // Process string
+    }
+}

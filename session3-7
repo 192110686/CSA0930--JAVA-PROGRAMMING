@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+// Custom exception class for non-integer values
+class NonIntegerValueException extends Exception {
+    public NonIntegerValueException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter an integer: ");
+            if (!scanner.hasNextInt()) {
+                throw new NonIntegerValueException("Non-integer value entered");
+            }
+            int number = scanner.nextInt();
+            System.out.println("Entered number: " + number);
+        } catch (NonIntegerValueException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input");
+        } finally {
+            scanner.close();
+        }
+    }
+}

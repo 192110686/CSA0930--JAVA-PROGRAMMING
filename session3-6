@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+// Custom exception class for invalid decimal numbers
+class InvalidDecimalNumberException extends Exception {
+    public InvalidDecimalNumberException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter a decimal number: ");
+            double number = scanner.nextDouble();
+            if (Double.isNaN(number) || Double.isInfinite(number)) {
+                throw new InvalidDecimalNumberException("Invalid decimal number entered");
+            }
+            System.out.println("Entered number: " + number);
+        } catch (InvalidDecimalNumberException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input");
+        } finally {
+            scanner.close();
+        }
+    }
+}

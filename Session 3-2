@@ -1,0 +1,42 @@
+public class word2 {
+    public static void main(String[] args) {
+        try {
+            // Accessing an array element outside its bound
+            int[] array = {1, 2, 3};
+            int element = array[3]; // This will throw ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out Of Bounds Exception: Accessing an array element outside its bound");
+        }
+
+        try {
+            // Iterating beyond the array length
+            int[] array = {1, 2, 3};
+            for (int i = 0; i <= array.length; i++) { // Note the condition i <= array.length
+                int element = array[i]; // This will throw ArrayIndexOutOfBoundsException
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out Of Bounds Exception: Iterating beyond the array length");
+        }
+
+        try {
+            // Nested array and incorrect index
+            int[][] nestedArray = {{1, 2}, {3, 4}};
+            int element = nestedArray[1][2]; // This will throw ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out Of Bounds Exception: Nested array and incorrect index");
+        }
+
+        try {
+            // Passing incorrect array to the method
+            int[] array = {1, 2, 3};
+            printArrayElement(array, 3); // Passing incorrect array index
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out Of Bounds Exception: Passing incorrect array to the method");
+        }
+    }
+
+    public static void printArrayElement(int[] array, int index) {
+        int element = array[index]; // This may throw ArrayIndexOutOfBoundsException
+        System.out.println("Array element at index " + index + ": " + element);
+    }
+}
